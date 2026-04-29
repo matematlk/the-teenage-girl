@@ -8,8 +8,10 @@ main {
     flex: 1;
 }
 
-.sidebar {
-    background-color: #ff9ebb;
+.bg-bow {
+    background-image: url("./images/bg-bow.png");
+    width: 40vw;
+    margin-left: auto;
 }
 
 .top-row {
@@ -48,18 +50,16 @@ main {
 
 @media (min-width: 641px) {
     .page {
-        flex-direction: row;
+        flex-direction: column;
     }
 
-    .sidebar {
-        width: 250px;
-        height: 100vh;
-        position: sticky;
+    .top-menu {
+        position: relative;
         top: 0;
     }
 
     .top-row {
-        position: sticky;
+        position: relative;
         top: 0;
         z-index: 1;
     }
