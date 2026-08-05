@@ -1,0 +1,43 @@
+@page "/{Category}"
+@rendermode InteractiveServer
+@inject BlogService BlogService
+
+<PageTitle>@Category</PageTitle>
+
+<div class="category-page">
+    <h1 class="category-header">@Category</h1>
+    
+    @if (categoryPosts.Count == 0)
+    {
+        <p>No posts yet! Come back later... :)</p>
+    }
+    else
+    {
+        @foreach (var post in categoryPosts)
+        {
+            <PostCard Post="post"/>
+        }
+    }
+</div>
+
+@code {
+    [Parameter] public string Category { get; set; } = "";
+    private List<PostMetadata> categoryPosts = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadPosts();
+    }
+    protected override async Task OnParametersSetAsync()
+    {
+        await LoadPosts();
+    }
+
+    private async Task LoadPosts()
+    {
+        var all = await BlogService.GetAllMetadataAsync();
+
+        categoryPosts = all.Where(p => p.Category.Equals(Category, StringComparison.OrdinalIgnoreCase)).ToList();
+    }
+
+}

@@ -1,0 +1,31 @@
+
+<a href="posts/@Post.Slug">
+<div class="latest-wrapper">
+    <div id="container">
+        <div class="scroll">
+            <div class="item">LATEST POST</div>
+            <div class="item">LATEST POST</div>
+            <div class="item">LATEST POST</div>
+            <div class="item">LATEST POST</div>
+            <div class="item">LATEST POST</div>
+            <div class="item">LATEST POST</div>
+            <div class="item">LATEST POST</div>
+            <div class="item">LATEST POST</div>
+            <div class="item">LATEST POST</div>
+            <div class="item">LATEST POST</div>
+            <div class="item">LATEST POST</div>
+        </div>
+    </div>
+    <div class="latest-card">
+        <h3>@Post.Title</h3>
+        <span class="post-print">@Post.Slug, @Post.Date.ToString("MMM d, yyyy")</span>
+        <img src="@Post.Image" alt="@Post.Title"/>
+        <p>@Post.Description</p>
+        <p>@Post.Subtext</p>
+    </div>
+</div>
+</a>
+
+@code {
+    [Parameter] public PostMetadata Post { get; set; } = null!;
+}

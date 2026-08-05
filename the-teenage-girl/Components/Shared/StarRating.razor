@@ -1,0 +1,21 @@
+<div class="stars">
+    @for (int i = 1; i <= 5; i++)
+    {
+        if (Rating >= i)
+        {
+            <span class="star full">★</span>
+        } 
+        else if (Rating >= i - 0.5f)
+        {
+            <span class="star half">★</span>
+        }
+        else
+        {
+            <span class="star empty">★</span>  
+        }
+    }
+</div>
+
+@code {
+    [Parameter] public float Rating { get; set; }
+}

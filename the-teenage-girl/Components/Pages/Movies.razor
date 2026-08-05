@@ -1,0 +1,19 @@
+@page "/Movies"
+@rendermode InteractiveServer
+@inject BlogService BlogService
+@inject MovieService MovieService
+
+<PageTitle>Movies</PageTitle>
+
+<div class="ticket-page">
+    
+</div>
+
+@code {
+    private List<MovieMetaData> _allMovies = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _allMovies = await MovieService.GetAllMoviesAsync();
+    }
+}

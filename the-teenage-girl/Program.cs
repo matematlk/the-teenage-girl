@@ -1,10 +1,15 @@
 using the_teenage_girl.Components;
+using the_teenage_girl.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+
+builder.Services.AddScoped<BlogService>()
+    .AddScoped<MovieService>();
 
 var app = builder.Build();
 

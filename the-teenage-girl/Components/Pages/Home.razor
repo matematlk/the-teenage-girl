@@ -1,7 +1,57 @@
 ﻿@page "/"
+@rendermode InteractiveServer
+@inject BlogService BlogService
+@inject MovieService MovieService
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="page-container">
+    <article class="main-content">
+        
+        @if (latestPost != null)
+        {
+            
+            <LatestPostCard Post="latestPost"/>
+            
+        }
+        
+        <div class="recent-grid">
+            <p class="banner-title">READ MORE</p>
 
-Welcome to your new app.
+            @foreach (var post in recentPosts)
+            {
+                <PostCard Post="post"/>
+            }
+
+        </div>
+    </article>
+
+    <div class="right-col">
+        <NavSideBar Categories="categories"/>
+        
+        <AboutSide />
+        
+        <MovieTicket Movie="latestMovie"/>
+    </div>
+</div>
+
+@code
+{
+    private PostMetadata? latestPost;
+    private List<PostMetadata> recentPosts = new();
+    private List<string> categories = new();
+
+    private MovieMetaData? latestMovie;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var all = await BlogService.GetAllMetadataAsync();
+        var allM = await MovieService.GetAllMoviesAsync();
+
+        latestPost = all.FirstOrDefault();
+        recentPosts = all.Skip(1).Take(5).ToList();
+        categories = all.Select(p => p.Category).Distinct().ToList();
+
+        latestMovie = allM.FirstOrDefault();
+    }
+}

@@ -1,0 +1,36 @@
+.post-card {
+    display: flex;
+    flex-direction: row;
+    background-color: #f5f5f5;
+    padding: 1rem 1.5rem;
+    border-bottom: dotted #afafaf 2px !important;
+}
+
+    
+    .post-card:last-of-type {
+        border-bottom: none;
+    }
+
+.post-card-body {
+    display: flex;
+    flex-direction: column;
+    align-content: start;
+    padding: 0 1rem;
+    cursor: pointer;
+}
+
+h2 {
+    margin-bottom: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+img {
+    object-fit: cover;
+    width: 250px;
+    height: 250px;
+    min-width: 250px;
+    min-height: 250px;
+    max-width: 250px;
+    max-height: 250px;
+}

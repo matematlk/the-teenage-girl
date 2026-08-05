@@ -1,0 +1,17 @@
+@namespace the_teenage_girl.Components.Shared
+
+<div class="card">
+    <div class="small-banner-title">navigate</div>
+    
+    @foreach (var category in Categories)
+    {
+        <a href="/@category.ToLower()">
+            <p>@category</p>
+        </a>
+    }
+</div>
+
+@code {
+    [Parameter] public List<string> Categories { get; set; } = new();
+    
+}

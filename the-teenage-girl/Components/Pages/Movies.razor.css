@@ -1,0 +1,30 @@
+.ticket-page {
+    position: relative;
+    min-height: 100vh;
+    background: var(--surface-1, #f4f1ea);
+    overflow: hidden;
+}
+
+.ticket-page::before,
+.ticket-page::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: var(--surface-0, #ffffff);
+    -webkit-mask-image: radial-gradient(circle at 10px 12px, transparent 8px, black 9px);
+    mask-image: radial-gradient(circle at 10px 12px, transparent 8px, black 9px);
+    -webkit-mask-size: 20px 24px;
+    mask-size: 20px 24px;
+    -webkit-mask-repeat: repeat-y;
+    mask-repeat: repeat-y;
+}
+
+.ticket-page::before {
+    left: clamp(12px, 3vw, 32px);
+}
+
+.ticket-page::after {
+    right: clamp(12px, 3vw, 32px);
+}

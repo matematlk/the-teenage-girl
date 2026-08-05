@@ -1,0 +1,35 @@
+.stars {
+    display: flex;
+    gap: 0.2em;
+}
+
+.star {
+    font-size: 1.8em;
+    color: #1e0e00;
+}
+
+.full {
+    color: #1e0e00;
+}
+
+.half {
+    /* CSS trick for half: clips the colored star at 50% */
+    position: relative;
+    display: inline-block;
+    color: #BBA060;
+}
+
+.half::before {
+    content: "★";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    overflow: hidden;
+    display: block;
+    color: #1e0e00;
+}
+
+.empty {
+    color: #BBA060;
+}

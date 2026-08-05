@@ -1,9 +1,9 @@
 nav {
     position: relative;
-    width: calc(100vw - 2rem);
+    width: 96vw;
     border-radius: 9px;
     background-color: #ff9ebb;
-    margin-left: 1rem;
+    margin-left: 2vw;
     display: flex;
     flex-direction: row;
 }
@@ -32,6 +32,7 @@ nav {
     font-family: 'Fredoka', sans-serif;
     padding-top: .5rem;
     padding-bottom: 1rem;
+    cursor: pointer;
 }
 
 .nav-item {
@@ -47,7 +48,7 @@ nav {
     }
 
     .nav-item ::deep .nav-link {
-        color: #d7d7d7;
+        color: #f2f2f2;
         font-size: 1rem;
         background: none;
         height: 3rem;

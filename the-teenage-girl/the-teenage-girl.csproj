@@ -10,7 +10,26 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="wwwroot\images\" />
+      <Content Update="Components\Pages\Posts\Media\boys004.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Markdig" Version="1.1.3" />
+      <PackageReference Include="YamlDotNet" Version="17.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\posts\boys_004.md" />
+      <None Include="wwwroot\src\output.css" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Components\Widgets\LatestPost.razor" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\output.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\tailwind.config.js" />
     </ItemGroup>
 
 </Project>

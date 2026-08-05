@@ -1,0 +1,48 @@
+@page "/{Category}/{Slug}"
+@inject BlogService BlogService
+
+@if (post == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="page-container">
+        <div class="main-content">
+            <article class="post-content">
+                <p class="banner-title m-0">@post.Title</p>
+                <p class="post-print mt-4">
+                    @post.Slug,
+                    @post.Date.ToString("MMM d,yyyy")
+                </p>
+                
+                <img src="@post.Image" alt="@post.Title"/>
+                
+                @((MarkupString)post.HtmlContent)
+            </article>
+        </div>
+        <div class="right-col">
+            <NavSideBar Categories="categories"/>
+        </div>
+    </div>
+}
+
+@code {
+
+    [Parameter] public string Slug { get; set; } = "";
+    [Parameter] public string Category { get; set; } = "";
+    
+    private List<string> categories = new();
+
+    private BlogPost ? post;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        post = await BlogService.GetPostAsync(Slug);
+        
+        var all = await BlogService.GetAllMetadataAsync();
+        
+        categories = all.Select(p => p.Category).Distinct().ToList();
+    }
+
+}

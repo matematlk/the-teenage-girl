@@ -1,0 +1,17 @@
+
+
+<a href="/posts/@Post.Slug">
+<div class="post-card">
+    <img src="@Post.Image" alt="@Post.Title"/>
+    <div class="post-card-body">
+        <h2>@Post.Title</h2>
+        <p class="post-print">@Post.Slug, @Post.Date.ToString("MMM d, yyyy")</p>
+        <p>@Post.Description</p>
+        <p>@Post.Subtext</p>
+    </div>
+</div>
+</a>
+
+@code {
+    [Parameter] public PostMetadata Post { get; set; } = null!;
+}
