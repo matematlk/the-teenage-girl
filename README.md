@@ -8,7 +8,7 @@ This is the second (much cleaner) version of this blog; dynamically rendered, co
 
 URL
 --
-http://www.the-teenage-girl
+[http://www.the-teenage-girl](https://matematlk.github.io/the-teenage-girl/)
 
 Author
 --
