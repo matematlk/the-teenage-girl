@@ -1,7 +1,3 @@
-@import "tailwindcss";
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
-@import "tailwindcss/preflight";
-@tailwind utilities;
 
 :root {
     --primary-bg-color: #ffccd5;
