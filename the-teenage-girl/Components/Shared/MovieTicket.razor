@@ -18,11 +18,11 @@
                 }
             }
         </div>
-        <div class="description-section justify-start flex flex-col ml-1 w-[80em] content-start">
-            <p class="sub-title pt-3">Title : </p>
-            <p class="movie-title justify-self-center font-bold pt-1">@Movie.Title</p>
-            <p class="mt-1"><i>@Movie.Review</i></p>
-            <div class="rating-section flex flex-row pt-7 align-center content-between">
+        <div class="description-section">
+            <p class="sub-title">Title : </p>
+            <p class="movie-title">@Movie.Title</p>
+            <p style="margin-top: .5rem;"><i>@Movie.Review</i></p>
+            <div class="rating-section">
                 <p class="sub-title">Rating : </p>
                 <StarRating Rating="@Movie.Rating"/>
             </div>

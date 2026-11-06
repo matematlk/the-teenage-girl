@@ -3,6 +3,8 @@
     color: #1e0e00;
     margin-bottom: 1rem;
     font-size: clamp(0.5rem, 1.5vw, 1rem);
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .ticket-title {
@@ -25,43 +27,46 @@
     justify-self: center;
 }
 
-.category-ticker p {
-    font-size: 0.8em;
-    white-space: nowrap;
-    padding: 0 0.2rem;
+.category-ticker {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .description-section {
     display: flex;
     flex-direction: column;
-    justify-self: center;
     justify-content: start;
     border-top: dashed 3px #f8ac3b;
     border-bottom: dashed 3px #f8ac3b;
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
+    box-sizing: border-box;
+    width: auto;
+    min-width: 0;
+    max-width: calc(100% - 3rem);
 }
 
 .rating-section {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     text-align: center;
-    margin-top: 8rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     padding-bottom: 0.2rem;
 }
 
 .movie-title {
     font-size: 1.2em;
     font-weight: bold;
-    justify-self: center !important;
     text-align: center;
 }
 
 .ticket-barcode {
-    align-self: center;
-    justify-self: center;
+    display: flex;
+    justify-content: center;
     padding: 0.8rem 0.4rem 1rem 0.4rem;
 }
 

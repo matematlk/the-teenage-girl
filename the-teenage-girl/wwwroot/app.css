@@ -157,6 +157,36 @@ h1:focus {
     outline: none;
 }
 
+/* Movie Ticket Styling */
+
+.description-section {
+    display:flex;
+    flex-direction: column;
+    justify-self: start;
+    margin-left: 1rem;
+    width: 80em;
+    justify-content: start;
+}
+
+.sub-title {
+    padding-top: 2rem;
+}
+
+.movie-title {
+    justify-self: center;
+    font-weight: bold;
+    padding-top: .5rem;
+}
+
+.rating-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding-top: 3rem;
+}
+
 /* dynamic resizing */
 
 @media screen and (max-width: 1000px) {
