@@ -3,46 +3,60 @@ using Models;
 using Markdig;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
-using Microsoft.AspNetCore.Hosting;
+using System.Net.Http.Json;
 
 public class BlogService
 {
-    private readonly string _postsPath;
+    private readonly HttpClient _http;
     private List<PostMetadata>? _cachedMeta;
+    private Dictionary<string, string>? _rawCache; // slug
     
-    public BlogService(IWebHostEnvironment env)
+    public BlogService(HttpClient http)
     {
-        _postsPath = Path.Combine(env.WebRootPath, "posts");
+        _http = http;
     }
 
-    public Task<List<PostMetadata>> GetAllMetadataAsync()
+    public async Task<List<PostMetadata>> GetAllMetadataAsync()
     {
-        if (_cachedMeta != null) return Task.FromResult(_cachedMeta);
+        if (_cachedMeta != null) return _cachedMeta;
 
-        var files = Directory.GetFiles(_postsPath, "*.md");
+        var slugs = await _http.GetFromJsonAsync<List<string>>("posts/manifest.json") ?? new();
         var result = new List<PostMetadata>();
+        _rawCache = new Dictionary<string, string>();
         
-        foreach (var file in files)
+        foreach (var slug in slugs)
         {
-            var slug = Path.GetFileNameWithoutExtension(file);
-            var raw = File.ReadAllText(file);
+            var raw = await _http.GetStringAsync($"posts/{slug}.md");
+            _rawCache[slug] = raw;
             var (meta, _) = Parse(raw, slug);
             result.Add(meta);
         }
         
         _cachedMeta = result.OrderByDescending(p => p.Date).ToList();
-        return Task.FromResult(_cachedMeta);
+        return _cachedMeta;
     }
 
-    public Task<BlogPost?> GetPostAsync(string slug)
+    public async Task<BlogPost?> GetPostAsync(string slug)
     {
-        var filePath = Path.Combine(_postsPath, $"{slug}.md");
-        if (!File.Exists(filePath)) return Task.FromResult<BlogPost?>(null);
-        
-        var raw = File.ReadAllText(filePath);
+        string raw;
+        if (_rawCache != null && _rawCache.TryGetValue(slug, out var cached))
+        {
+            raw = cached;
+        }
+        else
+        {
+            try
+            {
+                raw = await _http.GetStringAsync($"posts/{slug}.md");
+            }
+            catch (HttpRequestException)
+            {
+                return null; // 404 -> no such post
+            }
+        }
         var (meta, htmlContent) = Parse(raw, slug);
 
-        return Task.FromResult<BlogPost?>(new BlogPost
+        return new BlogPost
         {
             Slug = meta.Slug,
             Title = meta.Title,
@@ -52,7 +66,7 @@ public class BlogService
             Subtext = meta.Subtext,
             Category = meta.Category,
             HtmlContent = htmlContent
-        });
+        };
     }
 
     private (PostMetadata, string) Parse(string rawMarkdown, string slug)

@@ -2,69 +2,61 @@ namespace the_teenage_girl.Services;
 using Models;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
-using Microsoft.AspNetCore.Hosting;
+using System.Net.Http.Json;
 
 public class MovieService
 {
-    private readonly string _moviesPath;
+    private readonly HttpClient _http;
     private List<MovieMetaData>? _cachedMovies;
 
-    // STEP 1: constructor
-    // build path to wwwroot/movies/ and store it
-    public MovieService(IWebHostEnvironment env)
+    public MovieService(HttpClient http)
     {
-        _moviesPath = Path.Combine(env.WebRootPath, "movies");
-        Directory.CreateDirectory(_moviesPath);
+        _http = http;
     }
 
-    // STEP 2: get all movies
-    // read all files once, store result, and return cached list on subsequent calls
-    public Task<List<MovieMetaData>> GetAllMoviesAsync()
+    public async Task<List<MovieMetaData>> GetAllMoviesAsync()
     {
-        if (_cachedMovies != null) return Task.FromResult(_cachedMovies);
+        if (_cachedMovies != null) return _cachedMovies;
 
-        var files = Directory.GetFiles(_moviesPath, "*.md");
+        var slugs = await _http.GetFromJsonAsync<List<string>>("movies/manifest.json") ?? new();
         var result = new List<MovieMetaData>();
 
-        foreach (var file in files)
+        foreach (var slug in slugs)
         {
             try
             {
-                var slug = Path.GetFileNameWithoutExtension(file);
-                var raw = File.ReadAllText(file);
+                var raw = await _http.GetStringAsync($"movies/{slug}.md");
                 var movie = Parse(raw, slug);
                 result.Add(movie);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Skipping {file}: {ex.Message}");
+                Console.WriteLine($"Skipping {slug}: {ex.Message}");
             }
             
         }
         
         _cachedMovies = result.OrderByDescending(m => m.DateWatched).ToList();
-        return Task.FromResult(_cachedMovies);
+        return _cachedMovies;
     }
 
-    // STEP 3: get single movie by slug
-    // used if ever want to add a page at /movies/{slug}
-    public Task<MovieMetaData?> GetMovieAsync(string slug)
+    public async Task<MovieMetaData?> GetMovieAsync(string slug)
     {
-        var filePath = Path.Combine(_moviesPath, $"{slug}.md");
-        if (!File.Exists(filePath)) return Task.FromResult<MovieMetaData?>(null);
-        
-        var raw = File.ReadAllText(filePath);
-        var movie = Parse(raw, slug);
-        return Task.FromResult<MovieMetaData?>(movie);
+        try
+        {
+            var raw = await _http.GetStringAsync($"movies/{slug}.md");
+            return Parse(raw, slug);
+        }
+        catch (HttpRequestException)
+        {
+            return null; // 404 no movie
+        }
     }
     
-    // STEP4 : parse single file
-    // get frontmatter only (because no content as opposed to blog)
     private MovieMetaData Parse(string rawMarkdown, string slug)
     {
         var parts = rawMarkdown.Split(new[] { "---" }, 3, StringSplitOptions.None);
         
-        // if there is valid frontmatter (3 parts: empty, yaml, body)
         if (parts.Length >= 3)
         {
             var deserializer = new DeserializerBuilder()
@@ -73,11 +65,10 @@ public class MovieService
                 .Build();
 
             var movie = deserializer.Deserialize<MovieMetaData>(parts[1]);
-            movie.Slug = slug; // always override slug with filename, not frontmatter
+            movie.Slug = slug;
             return movie;
         }
         
-        // fallback if file has no frontmatter
         return new MovieMetaData { Slug = slug };
     }
 }
