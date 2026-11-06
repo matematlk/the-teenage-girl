@@ -15,6 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      - name: Debug
+        run: |
+          pwd
+          ls -la
+          ls -la the-teenage-girl
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v6
         with:
@@ -30,6 +36,7 @@ jobs:
           cache-dependency-path: the-teenage-girl/package-lock.json
 
       - name: Build Tailwind
+        working-directory: the-teenage-girl
         run: |
           npm ci
           npx @tailwindcss/cli -i wwwroot/src/input.css -o wwwroot/src/output.css --minify
