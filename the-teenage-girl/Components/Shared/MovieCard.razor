@@ -1,0 +1,15 @@
+@using the_teenage_girl.Models
+
+<div class="movie-card" style="background-image:url('@Movie.Image')">
+    <div class="movie-card-overlay">
+        <div class="movie-card-title">@Movie.Title</div>
+        <div class="movie-card-meta">
+            @Movie.DateWatched.ToString("MMM d")   · <StarRating Rating="@Movie.Rating" MoviePage="true"/>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public MovieMetaData Movie { get; set; } = default!;
+}
