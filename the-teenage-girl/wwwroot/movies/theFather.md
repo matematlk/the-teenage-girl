@@ -1,7 +1,7 @@
 ---
 title: "The Father"
 year: 2020
-image: "../images/theFather.jpg"
+image: "/images/theFather.jpg"
 dateWatched: 2026-05-08
 rating: 3.5
 genre: "drama"

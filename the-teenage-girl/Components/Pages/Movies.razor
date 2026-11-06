@@ -1,12 +1,18 @@
 @page "/Movies"
-@rendermode InteractiveServer
-@inject BlogService BlogService
+@implements IAsyncDisposable
+@using the_teenage_girl.Components.Shared
 @inject MovieService MovieService
+@inject IJSRuntime js
 
 <PageTitle>Movies</PageTitle>
 
 <div class="ticket-page">
-    
+    <div class="movie-list">
+        @foreach (var movie in _allMovies)
+        {
+            <MovieCard Movie="movie" @key="movie.Slug" />
+        }
+    </div>
 </div>
 
 @code {
@@ -16,4 +22,18 @@
     {
         _allMovies = await MovieService.GetAllMoviesAsync();
     }
+
+	protected override async Task OnAfterRenderAsync(bool firstRender) 
+	{
+		if (firstRender)
+		{
+			await js.InvokeVoidAsync("setMovieTheme", true);
+		}
+    }
+
+	public async ValueTask DisposeAsync()
+    {
+        await js.InvokeVoidAsync("setMovieTheme", false);
+    }
+    
 }

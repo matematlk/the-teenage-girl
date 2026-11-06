@@ -3,19 +3,20 @@
     {
         if (Rating >= i)
         {
-            <span class="star full">★</span>
+            <span class="@(MoviePage ? "yellow":"") star full">★</span>
         } 
         else if (Rating >= i - 0.5f)
         {
-            <span class="star half">★</span>
+            <span class="@(MoviePage ? "yellow":"") star half">★</span>
         }
         else
         {
-            <span class="star empty">★</span>  
+            <span class="@(MoviePage ? "brown":"") star empty">★</span>  
         }
     }
 </div>
 
 @code {
     [Parameter] public float Rating { get; set; }
+    [Parameter] public bool MoviePage { get; set; } = false;
 }

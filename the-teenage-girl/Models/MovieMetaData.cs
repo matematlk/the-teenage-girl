@@ -11,4 +11,5 @@ public class MovieMetaData
     public string Genre { get; set; } = "";
     public string Review { get; set; } = "";
     public string Description { get; set; } = "";
+    public string ScreenshotUrl { get; set; } = "";
 }

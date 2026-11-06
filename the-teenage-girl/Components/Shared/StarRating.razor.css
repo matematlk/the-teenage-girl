@@ -8,8 +8,20 @@
     color: #1e0e00;
 }
 
+.yellow {
+    color: #BBA060 !important;
+}
+
+.brown {
+    color: #1e0e00 !important;
+}
+
 .full {
     color: #1e0e00;
+}
+
+.full.yellow {
+    color: #BBA060;
 }
 
 .half {
@@ -17,6 +29,14 @@
     position: relative;
     display: inline-block;
     color: #BBA060;
+}
+
+.half.yellow {
+    color: #1e0e00 !important;
+}
+
+.half.yellow::before {
+    color: #BBA060 !important;
 }
 
 .half::before {
@@ -32,4 +52,8 @@
 
 .empty {
     color: #BBA060;
+}
+
+.empty.brown {
+    color: #1e0e00;
 }

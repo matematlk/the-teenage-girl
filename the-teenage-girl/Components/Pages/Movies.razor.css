@@ -1,8 +1,13 @@
 .ticket-page {
+    --rail-w: 106px;
+    --hole-h: 160px;
+    --rail-inset: clamp(12px, 3vw, 32px);
+
     position: relative;
     min-height: 100vh;
-    background: var(--surface-1, #f4f1ea);
+    background: #1b1a1a;
     overflow: hidden;
+    top: 2rem;
 }
 
 .ticket-page::before,
@@ -11,20 +16,25 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 20px;
-    background: var(--surface-0, #ffffff);
-    -webkit-mask-image: radial-gradient(circle at 10px 12px, transparent 8px, black 9px);
-    mask-image: radial-gradient(circle at 10px 12px, transparent 8px, black 9px);
-    -webkit-mask-size: 20px 24px;
-    mask-size: 20px 24px;
+    width: var(--rail-w);
+    background: #ffccd5;
+
+    -webkit-mask-image: url("./images/ticket-hole.svg");
+    mask-image: url("images/ticket-hole.svg");
+    -webkit-mask-size: var(--rail-w) var(--hole-h);
+    mask-size: var(--rail-w) var(--hole-h);
     -webkit-mask-repeat: repeat-y;
     mask-repeat: repeat-y;
+    -webkit-mask-position: top left;
+    mask-position: top left;
 }
 
-.ticket-page::before {
-    left: clamp(12px, 3vw, 32px);
-}
+.ticket-page::before { left: var(--rail-inset); }
+.ticket-page::after  { right: var(--rail-inset); }
 
-.ticket-page::after {
-    right: clamp(12px, 3vw, 32px);
+.movie-list { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1rem; 
+    padding-left: 15vw;
 }
