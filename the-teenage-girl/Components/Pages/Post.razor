@@ -1,9 +1,9 @@
 @page "/{Category}/{Slug}"
 @inject BlogService BlogService
 
-@if (post == null)
+@if (isLoading || post == null)
 {
-    <p>Loading...</p>
+    <Loading />
 }
 else
 {
@@ -31,6 +31,7 @@ else
 
     [Parameter] public string Slug { get; set; } = "";
     [Parameter] public string Category { get; set; } = "";
+    public bool isLoading = true;
     
     private List<string> categories = new();
 
@@ -43,6 +44,7 @@ else
         var all = await BlogService.GetAllMetadataAsync();
         
         categories = all.Select(p => p.Category).Distinct().ToList();
+        isLoading = false;
     }
 
 }

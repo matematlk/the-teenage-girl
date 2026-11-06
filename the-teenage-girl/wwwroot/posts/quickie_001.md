@@ -7,7 +7,7 @@ description: "A conversation with the loml"
 subtext: "\"Wait you're like actually funny haha...\""
 ---
 
-The other day, as I was talking with my wonderful boyfriend 5happy one year to me !!!)
+The other day, as I was talking with my wonderful boyfriend happy one year to me !!!)
 my thoughts started wondering and I tried imagining a world where the vegans had won and no one ate 
 meat or any animal byproducts anymore. As I am sure you can imagine, this brought on a lot of 
 secondary question such as what would they do with all the extra chickens, and would the
