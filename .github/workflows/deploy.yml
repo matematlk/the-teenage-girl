@@ -43,6 +43,9 @@ jobs:
 
       - name: Publish
         run: dotnet publish the-teenage-girl/the-teenage-girl.csproj -c Release -o release --nologo
+        
+      - name: Debug Tailwind
+        run: ls -la release/wwwroot/src
 
       - name: Change base-href
         run: sed -i 's/<base href="\/" \/>/<base href="\/the-teenage-girl\/" \/>/g' release/wwwroot/index.html
