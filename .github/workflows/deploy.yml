@@ -32,7 +32,7 @@ jobs:
       - name: Build Tailwind
         run: |
           npm ci
-          npx @tailwindcss/cli -i the-teenage-girl/wwwroot/src/input.css -o the-teenage-girl/wwwroot/src/output.css --minify
+          npx @tailwindcss/cli -i wwwroot/src/input.css -o wwwroot/src/output.css --minify
 
       - name: Publish
         run: dotnet publish the-teenage-girl/the-teenage-girl.csproj -c Release -o release --nologo
