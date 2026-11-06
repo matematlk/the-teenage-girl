@@ -2,7 +2,7 @@
 title: "When are you actually an adult?"
 category: "other"
 date: 2024-07-02
-image: '../images/other001.webp'
+image: 'images/other001.webp'
 description: "Because we all know it's not as easy as turning 18."
 subtext: "Trying desperately to understand what makes an adult an adult because the current certified adults refuse to tell us, all the while avoiding their patronization but without stopping to patronize others myself..."
 ---

@@ -2,7 +2,7 @@
 title: "A letter to my mother"
 category: "introspection"
 date: 2026-05-14
-image: '../images/intro006.jpg'
+image: 'images/intro006.jpg'
 description: "Finding my safe space as instructed by my counsellor"
 subtext: "You know for someone who is great at visualizing things, I can't believe I could never just visualize my mind palace..."
 ---

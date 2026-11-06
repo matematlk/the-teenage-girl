@@ -2,7 +2,7 @@
 title: "Where am I going?"
 category: "introspection"
 date: 2024-08-18
-image: '../images/intro002.png'
+image: 'images/intro002.png'
 description: "Seeing my life move on before me and not being able to stop it."
 subtext: "Also planning what I want to do with my life when I actually catch up to it…"
 ---

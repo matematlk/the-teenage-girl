@@ -2,7 +2,7 @@
 title: "Who am I becoming?"
 category: "introspection"
 date: 2024-12-13
-image: '../images/intro003.png'
+image: 'images/intro003.png'
 description: "This growing up thing is for real a pain in my a**"
 subtext: "Am I in a constant state of dissociation or am I just growing up?..."
 ---

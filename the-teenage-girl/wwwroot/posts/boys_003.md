@@ -2,7 +2,7 @@
 title: "My First Date!!!"
 category: "boys"
 date: 2024-12-03
-image: '../images/boys003.webp'
+image: 'images/boys003.webp'
 description: "Managing expectations but keeping an open mind"
 subtext: "I really can’t control what other people think but if they tell me they want to hang out with me it means they want to right? right?…"
 ---

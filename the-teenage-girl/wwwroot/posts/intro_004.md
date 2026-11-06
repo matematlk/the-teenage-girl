@@ -2,7 +2,7 @@
 title: "My January highlights"
 category: "introspection"
 date: 2025-02-10
-image: '../images/intro004.jpg'
+image: 'images/intro004.jpg'
 description: "Having a look at things I liked this month"
 subtext: "What makes me me or at least what made me me this past month..."
 ---

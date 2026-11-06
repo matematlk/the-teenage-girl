@@ -2,7 +2,7 @@
 title: "Let's get nostalgic"
 category: "boys"
 date: 2026-04-26
-image: '../images/boys004.png'
+image: 'images/boys004.png'
 description: "A contextual look at a 2-year old journal entry"
 subtext: "A bit of a backstory into this guy I potentially had a crush on for honestly too long so you can make your own idea of it..."
 ---

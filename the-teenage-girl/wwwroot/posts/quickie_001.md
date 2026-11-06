@@ -2,7 +2,7 @@
 title: "The tiktokification of dating slopcore"
 category: "quickie"
 date: 2026-07-16
-image: '../images/quickie001.jpg'
+image: 'images/quickie001.jpg'
 description: "A conversation with the loml"
 subtext: "\"Wait you're like actually funny haha...\""
 ---

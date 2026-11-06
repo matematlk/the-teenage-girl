@@ -2,7 +2,7 @@
 title: "Recession? yes. but not in America, in my emotional life..."
 category: "introspection"
 date: 2025-04-14
-image: '../images/intro005.png'
+image: 'images/intro005.png'
 description: "Things end and those are just new beginnings right? but just how many things change?"
 subtext: "Guys I'm so scaweeed, don't take my friends away pweeeeeease..."
 ---

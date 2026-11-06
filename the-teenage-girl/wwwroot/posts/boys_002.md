@@ -2,7 +2,7 @@
 title: "Dating in college 101"
 category: "boys"
 date: 2024-11-20
-image: '../images/boys002.webp'
+image: '/images/boys002.webp'
 description: "Is it like the movies? Is it just an urban legend?"
 subtext: "My first experience with dating apps expectations vs reality, is it really that easy to fall in love..."
 ---

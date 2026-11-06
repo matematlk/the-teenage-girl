@@ -2,7 +2,7 @@
 title: "The double standard of taking back"
 category: "quickie"
 date: 2026-10-06
-image: '../images/quickie002.jpg'
+image: 'images/quickie002.jpg'
 description: "Or another example of the US being hypocrites"
 subtext: "\"you snooze, you lose\""
 ---

@@ -2,7 +2,7 @@
 title: "Free flowing thoughts I had on the bus *FOR FREE*"
 category: "other"
 date: 2024-12-17
-image: '../images/other002.jpg'
+image: 'images/other002.jpg'
 description: "I don't know what it is about highways but I turn into a philosopher."
 subtext: "A ramble about road colours and textures, capitalism and human instinct..."
 ---

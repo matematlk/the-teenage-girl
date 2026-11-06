@@ -2,7 +2,7 @@
 title: "On growing up and freedom"
 category: "introspection"
 date: 2024-06-30
-image: '../images/intro001.jpg'
+image: 'images/intro001.jpg'
 description: "And why do I still have a curfew at 18?"
 subtext: "I just think it's unfair guys can go out just about anytime and their parents don't worry a bit when I have to
  get back home before my carriage turns back into a pumpkin. This is all Cinderella's fault..."
